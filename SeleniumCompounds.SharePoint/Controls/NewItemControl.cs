@@ -13,14 +13,11 @@ namespace SeleniumCompounds.SharePoint.Controls
     {
         private readonly IWebDriver driver;
 
-        public ContextualMenu contextMenu { get; }
-
         private IWebElement NewButton => driver.FindElementByAttributeValue("button", "data-automation-id", "pageCommandBarNewButton");
 
         public NewItemControl(IWebDriver driver)
         {
             this.driver = driver;
-            this.contextMenu = new ContextualMenu(driver);
         }
 
         /// <summary>
