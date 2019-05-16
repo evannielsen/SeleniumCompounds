@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.11.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SeleniumCompounds.Driver\SeleniumCompounds.Driver.csproj" />
+    <ProjectReference Include="..\SeleniumCompounds.Extensions\SeleniumCompounds.Extensions.csproj" />
+  </ItemGroup>
+
+</Project>

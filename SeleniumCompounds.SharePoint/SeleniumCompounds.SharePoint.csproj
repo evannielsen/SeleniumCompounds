@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Selenium.Support" Version="3.141.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SeleniumCompounds.Configuration\SeleniumCompounds.Configuration.csproj" />
+    <ProjectReference Include="..\SeleniumCompounds.Extensions\SeleniumCompounds.Extensions.csproj" />
   </ItemGroup>
 
 </Project>
