@@ -10,6 +10,7 @@ using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 using SeleniumCompounds.Configuration;
 using SeleniumCompounds.Extensions;
+using SeleniumCompounds.Configuration.Models;
 
 namespace SeleniumCompounds.Driver.Factory
 {
@@ -23,7 +24,7 @@ namespace SeleniumCompounds.Driver.Factory
         /// </summary>
         /// <param name="driverType">The type of browser the driver represents.</param>
         /// <returns></returns>
-        public IWebDriver Build(BrowserType driverType)
+        public IWebDriver Build(BrowserType driverType, TestSuiteConfiguration testSuiteConfiguration)
         {
             DriverManager driverManager = new DriverManager();
 
@@ -54,7 +55,7 @@ namespace SeleniumCompounds.Driver.Factory
             if (driver != null)
             {
                 //This waits for the page to load.
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(ConfigurationManager.Current.DriverImplicitWaitTimeInSeconds);
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(testSuiteConfiguration.ElementLoadWaitTimeInSeconds);
                 if (ConfigurationManager.Current.RunBrowserInFullScreenMode)
                 {
                     driver.MakeFullScreen();

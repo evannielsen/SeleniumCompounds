@@ -19,12 +19,12 @@ namespace SeleniumCompounds.NUnitTest.Extensions
         /// <returns></returns>
         public static IWebDriver TakeAndSaveScreenshot(this IWebDriver webDriver, TestContext testContext)
         {
-            string filePath = Path.Combine(testContext.TestDirectory, testContext.Test.ClassName);
+            string filePath = Path.Combine(testContext.WorkDirectory, "Results");
             if (!Directory.Exists(filePath))
             {
                 Directory.CreateDirectory(filePath);
             }
-            string fileName = $"{DateTime.Now.ToString("d18")}_{testContext.Test.MethodName}.png";
+            string fileName = $"{testContext.Test.FullName}_{DateTime.Now.Ticks.ToString("d18")}.png";
 
             FileInfo fileInfo = new FileInfo(Path.Combine(filePath, fileName));
 

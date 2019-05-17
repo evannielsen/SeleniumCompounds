@@ -1,4 +1,6 @@
-﻿using SeleniumCompounds.Driver;
+﻿using NUnit.Framework;
+using SeleniumCompounds.Configuration;
+using SeleniumCompounds.Driver;
 using SeleniumCompounds.Driver.Factory;
 using System;
 using System.Collections.Generic;
@@ -17,9 +19,13 @@ namespace SeleniumCompounds.NUnitTest.Factory
         public static IEnumerable<object[]> BuildDrivers(params BrowserType[] browserTypes)
         {
             SeleniumDriverFactory driverFactory = new SeleniumDriverFactory();
+            if (ConfigurationManager.Current == null)
+            {
+                ConfigurationManager.InitializeConfiguration(TestContext.CurrentContext.WorkDirectory);
+            }
             foreach (var browserType in browserTypes)
             {
-                yield return new object[] { driverFactory.Build(browserType) };
+                yield return new object[] { driverFactory.Build(browserType, ConfigurationManager.Current) };
             }
         }
     }

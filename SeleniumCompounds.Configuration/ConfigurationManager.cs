@@ -18,7 +18,7 @@ namespace SeleniumCompounds.Configuration
             return new ConfigurationBuilder()
                 .SetBasePath(outputPath)
                 .AddJsonFile("appsettings.json", true)
-                .AddJsonFile("secrects.json", true)
+                .AddJsonFile("secrets.json", true)
                 .AddEnvironmentVariables()
                 .Build();
         }

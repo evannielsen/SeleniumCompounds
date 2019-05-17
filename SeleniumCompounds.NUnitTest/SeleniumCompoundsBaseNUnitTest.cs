@@ -12,14 +12,13 @@ namespace SeleniumCompounds.NUnitTest
     /// <summary>
     /// Base class for an NUnit Selenium test.
     /// </summary>
-    [TestFixture]
     public abstract class SeleniumCompoundsBaseNUnitTest
     {
         /// <summary>
         /// Standard cleanup when running selenium tests.
         /// </summary>
         [TearDown]
-        public void Cleanup()
+        public virtual void Cleanup()
         {
             TestContext context = TestContext.CurrentContext;
 

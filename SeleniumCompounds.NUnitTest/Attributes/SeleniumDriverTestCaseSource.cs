@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using SeleniumCompounds.Configuration;
 using SeleniumCompounds.Driver;
 using SeleniumCompounds.NUnitTest.Factory;
 using System;
