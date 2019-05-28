@@ -63,7 +63,28 @@ namespace SeleniumCompounds.Extensions
         /// <param name="webDriver"></param>
         /// <param name="findFunction"></param>
         /// <returns></returns>
-        public static IWebElement FindElementWithWait(this IWebDriver webDriver, Func<IWebDriver, IWebElement> findFunction)
+        public static IWebElement FindElementWithWait(this IWebDriver webDriver, Func<IWebDriver, IWebElement> findFunction, TimeSpan waitOverride = default(TimeSpan))
+        {
+            TimeSpan waitTime = waitOverride != default(TimeSpan) ? waitOverride : TimeSpan.FromSeconds(ConfigurationManager.Current.ElementLoadWaitTimeInSeconds);
+            WebDriverWait wait = new WebDriverWait(webDriver, waitOverride);
+            wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+
+            return wait.Until(findFunction);
+        }
+
+        /// <summary>
+        /// Gets the first ancestor of an element by name.
+        /// </summary>
+        /// <param name="webDriver"></param>
+        /// <param name="text"></param>
+        /// <param name="ancestorElementName"></param>
+        /// <returns></returns>
+        public static IWebElement FindAncestorFromText(this IWebDriver webDriver, string text, string ancestorElementName)
+        {
+            return webDriver.FindElementWithWait((driver) => driver.FindElement(By.XPath(XPathSelectorFactory.GetAncestorContainsText(text, ancestorElementName))));
+        }
+
+        public static IReadOnlyCollection<IWebElement> FindElementsWithWait(this IWebDriver webDriver, Func<IWebDriver, IReadOnlyCollection<IWebElement>> findFunction)
         {
             WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(ConfigurationManager.Current.ElementLoadWaitTimeInSeconds));
             wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
@@ -77,9 +98,9 @@ namespace SeleniumCompounds.Extensions
         /// <param name="webDriver"></param>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static IWebElement FindElementByText(this IWebDriver webDriver, string text)
+        public static IWebElement FindElementByText(this IWebDriver webDriver, string text, TimeSpan waitOverride = default(TimeSpan))
         {
-            return webDriver.FindElementWithWait((driver) => driver.FindElement(By.XPath(XPathSelectorFactory.ContainsText(text))));
+            return webDriver.FindElementWithWait((driver) => driver.FindElement(By.XPath(XPathSelectorFactory.ContainsText(text))), waitOverride);
         }
 
         /// <summary>
@@ -127,10 +148,22 @@ namespace SeleniumCompounds.Extensions
         /// <returns></returns>
         public static IWebElement SetAttributeValue(this IWebElement webElement, IWebDriver webDriver, string attributeName, string value)
         {
-            IJavaScriptExecutor js = (IJavaScriptExecutor)webDriver;
-            js.ExecuteScript($"document.getElementById('{webElement.GetAttribute("id")}').setAttribute('{attributeName}','{value}')");
-
+            string script = $"document.getElementById('{webElement.GetAttribute("id")}').setAttribute('{attributeName}','{value}')";
+            webDriver.RunJavascript(script);
             return webElement;
+        }
+
+
+        /// <summary>
+        /// Runs the specified JavaScript in the browser.
+        /// </summary>
+        /// <param name="webDriver"></param>
+        /// <param name="javaScript"></param>
+        /// <returns></returns>
+        public static object RunJavascript(this IWebDriver webDriver, string javaScript)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)webDriver;
+            return js.ExecuteScript(javaScript);
         }
 
         /// <summary>

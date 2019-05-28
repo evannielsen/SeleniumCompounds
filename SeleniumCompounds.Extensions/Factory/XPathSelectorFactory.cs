@@ -15,5 +15,7 @@ namespace SeleniumCompounds.Extensions.Factory
         /// <param name="text">The text to search for.</param>
         /// <returns></returns>
         public static string ContainsText(string text) => $"//*[contains(text(),'{text}')]";
+
+        public static string GetAncestorContainsText(string text, string ancestorName) => $"{ContainsText(text)}/ancestor::{ancestorName}";
     }
 }
