@@ -9,13 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumCompounds.Pages", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumCompounds.Driver", "SeleniumCompounds.Driver\SeleniumCompounds.Driver.csproj", "{E1A67E9B-8AF7-457F-B034-2CC1CD11AAFA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumCompounds.MsTest", "SeleniumCompounds.MsTest\SeleniumCompounds.MsTest.csproj", "{0D9D8995-4987-4475-91EF-D8CAF79A6A38}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumCompounds.Configuration", "SeleniumCompounds.Configuration\SeleniumCompounds.Configuration.csproj", "{2EBEE47D-7CC3-4F32-AD33-F388E9DCFDF7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumCompounds.NUnitTest", "SeleniumCompounds.NUnitTest\SeleniumCompounds.NUnitTest.csproj", "{B1111916-3391-4F54-A201-61A8D285B252}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumCompounds.SharePoint", "SeleniumCompounds.SharePoint\SeleniumCompounds.SharePoint.csproj", "{4FBDCE2D-E0A2-4F08-A16A-82130453642D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumCompounds.SharePoint", "SeleniumCompounds.SharePoint\SeleniumCompounds.SharePoint.csproj", "{4FBDCE2D-E0A2-4F08-A16A-82130453642D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{E1A67E9B-8AF7-457F-B034-2CC1CD11AAFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1A67E9B-8AF7-457F-B034-2CC1CD11AAFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1A67E9B-8AF7-457F-B034-2CC1CD11AAFA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D9D8995-4987-4475-91EF-D8CAF79A6A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D9D8995-4987-4475-91EF-D8CAF79A6A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D9D8995-4987-4475-91EF-D8CAF79A6A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D9D8995-4987-4475-91EF-D8CAF79A6A38}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2EBEE47D-7CC3-4F32-AD33-F388E9DCFDF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2EBEE47D-7CC3-4F32-AD33-F388E9DCFDF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EBEE47D-7CC3-4F32-AD33-F388E9DCFDF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
